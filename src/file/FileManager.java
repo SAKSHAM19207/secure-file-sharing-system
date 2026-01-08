@@ -11,17 +11,24 @@ public class FileManager {
     private static final String META = "metadata.txt";
 
     public void upload(String user, String filePath) throws Exception {
-        Path input = Paths.get(filePath);
-        Path output = Paths.get(STORAGE + input.getFileName() + ".enc");
+    Path input = Paths.get(filePath);
 
-        AESEncryption.encrypt(input, output);
-
-        FileWriter fw = new FileWriter(META, true);
-        fw.write(new FileMetadata(user, output.getFileName().toString()) + "\n");
-        fw.close();
-
-        Logger.log(user + " uploaded " + output.getFileName());
+    if (!Files.exists(input)) {
+        System.out.println("❌ File not found. Please check the path.");
+        return;
     }
+
+    Path output = Paths.get(STORAGE + input.getFileName() + ".enc");
+
+    AESEncryption.encrypt(input, output);
+
+    FileWriter fw = new FileWriter(META, true);
+    fw.write(new FileMetadata(user, output.getFileName().toString()) + "\n");
+    fw.close();
+
+    Logger.log(user + " uploaded " + output.getFileName());
+    System.out.println("✅ File uploaded successfully!");
+}
 
     public void download(String user, String role, String encFile, String out) throws Exception {
         if (!authorized(user, role, encFile)) {
