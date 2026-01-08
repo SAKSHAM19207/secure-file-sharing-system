@@ -1,0 +1,201 @@
+SECURE FILE SHARING SYSTEM USING JAVA
+(CSE CORE PROJECT – COMPLETE GUIDE)
+
+====================================================
+PROJECT OVERVIEW
+====================================================
+
+Project Name:
+Secure File Sharing System using Java
+
+Description:
+A console-based Java application that allows users to securely upload and download files.
+Files are encrypted before storage, user passwords are hashed, and access control is enforced
+using roles (ADMIN / USER). The project follows a phased development approach and focuses on
+core Computer Science concepts.
+
+====================================================
+CORE CONCEPTS USED
+====================================================
+
+- Java (Core)
+- Object-Oriented Programming
+- File Handling
+- Cryptography (AES, SHA-256)
+- Role-Based Access Control
+- Logging
+- System Design
+
+====================================================
+PROJECT STRUCTURE
+====================================================
+
+secure-file-sharing-system/
+├── src/
+│   ├── auth/
+│   │   ├── User.java
+│   │   └── AuthManager.java
+│   ├── crypto/
+│   │   ├── HashUtil.java
+│   │   └── AESEncryption.java
+│   ├── file/
+│   │   ├── FileMetadata.java
+│   │   └── FileManager.java
+│   ├── util/
+│   │   └── Logger.java
+│   └── Main.java
+├── encrypted_files/
+│   └── .gitkeep
+├── users.txt
+├── metadata.txt
+├── activity.log
+└── README.md
+
+====================================================
+PHASED DEVELOPMENT
+====================================================
+
+Phase 1 – Core System (Completed)
+- User registration and login
+- Password hashing using SHA-256
+- File encryption using AES
+- Secure file upload and download
+
+Phase 2 – Access Control & Logging (Completed)
+- Role-based access control (ADMIN / USER)
+- File ownership tracking
+- Authorization before downloads
+- Activity logging
+
+Phase 3 – Enhancements (Planned)
+- Better validation
+- UI integration
+- Performance improvements
+
+====================================================
+HOW THE SYSTEM WORKS
+====================================================
+
+1. User registers with username, password, and role
+2. Password is hashed and stored securely
+3. User logs in using credentials
+4. User uploads a file
+   - File is encrypted using AES
+   - Encrypted file stored on disk
+   - Metadata stored (owner, filename, time)
+5. User downloads a file
+   - Authorization checked
+   - File decrypted if allowed
+6. All actions logged in activity.log
+
+====================================================
+HOW TO GET PROJECT FROM GITHUB
+====================================================
+
+Option 1: Clone Repository
+git clone https://github.com/SAKSHAM19207/secure-file-sharing-system.git
+cd secure-file-sharing-system
+
+Option 2: Download ZIP
+- Click "Code" on GitHub
+- Download ZIP
+- Extract the folder
+
+====================================================
+PREREQUISITES
+====================================================
+
+- Java JDK 8 or later installed
+- Terminal (macOS/Linux) or Command Prompt / PowerShell (Windows)
+
+Ensure these exist in project root:
+users.txt
+metadata.txt
+activity.log
+encrypted_files/
+
+====================================================
+RUNNING THE PROJECT (macOS / Linux)
+====================================================
+
+Compile:
+javac src/auth/*.java src/crypto/*.java src/file/*.java src/util/*.java src/Main.java
+
+Run:
+java -cp src Main
+
+====================================================
+RUNNING THE PROJECT (Windows)
+====================================================
+
+Compile:
+javac src\auth\*.java src\crypto\*.java src\file\*.java src\util\*.java src\Main.java
+
+Run:
+java -cp src Main
+
+====================================================
+APPLICATION FLOW (DEMO)
+====================================================
+
+On start:
+1. Register
+2. Login
+3. Exit
+
+Register:
+- Enter username
+- Enter password
+- Enter role (ADMIN or USER)
+- User registered successfully
+
+Login:
+- Enter username
+- Enter password
+- Login successful
+
+After login:
+1. Upload
+2. Download
+3. Logout
+
+Upload:
+- Provide absolute file path
+- File encrypted and stored
+
+Download:
+- Provide encrypted file path
+- Provide output path
+- File decrypted if authorized
+
+====================================================
+IMPORTANT NOTES
+====================================================
+
+- Always use absolute file paths
+- ADMIN can download all files
+- USER can download only their own files
+- Encryption happens before storage
+- Plain passwords are never stored
+
+====================================================
+INTERVIEW EXPLANATION (SHORT)
+====================================================
+
+"I built a secure file sharing system in Java where user authentication is handled
+using hashed passwords, files are encrypted using AES before storage, and access
+control is enforced using roles. The project follows a phased development approach
+and focuses on core system design and security concepts."
+
+====================================================
+PROJECT STATUS
+====================================================
+
+- Code complete
+- README complete
+- Execution tested
+- Interview-ready
+- Resume-ready
+
+END OF FILE
+====================================================
