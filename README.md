@@ -24,3 +24,5 @@ The project follows a phased development approach.
 - Cryptography (AES, SHA-256)
 - File Handling
 - OOP Principles
+
+- For detailed setup, execution steps, and explanations, refer to PROJECT_GUIDE.txt.
