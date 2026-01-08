@@ -25,4 +25,4 @@ The project follows a phased development approach.
 - File Handling
 - OOP Principles
 
-- For detailed setup, execution steps, and explanations, refer to PROJECT_GUIDE.txt.
+## For detailed setup, execution steps, and explanations, refer to PROJECT_GUIDE.txt.
