@@ -8,14 +8,11 @@ public class HashUtil {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             byte[] hash = md.digest(password.getBytes());
-
-            StringBuilder hex = new StringBuilder();
-            for (byte b : hash) {
-                hex.append(String.format("%02x", b));
-            }
-            return hex.toString();
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hash) sb.append(String.format("%02x", b));
+            return sb.toString();
         } catch (Exception e) {
-            throw new RuntimeException("Hashing error");
+            throw new RuntimeException("Hashing failed");
         }
     }
 }
