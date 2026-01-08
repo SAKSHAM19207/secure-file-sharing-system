@@ -1,8 +1,9 @@
-import auth.AuthManager;
+import auth.*;
 import file.FileManager;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         AuthManager auth = new AuthManager();
@@ -16,16 +17,32 @@ public class Main {
         System.out.print("Password: ");
         String p = sc.nextLine();
 
-        boolean ok = (ch == 1) ? auth.register(u, p) : auth.login(u, p);
-        if (!ok) return;
+        User user;
+
+        if (ch == 1) {
+            System.out.print("Role (ADMIN/USER): ");
+            String role = sc.nextLine();
+            auth.register(u, p, role);
+            user = new User(u, role);
+        } else {
+            user = auth.login(u, p);
+            if (user == null) {
+                System.out.println("Login failed");
+                return;
+            }
+        }
 
         System.out.println("1. Upload\n2. Download");
         int op = sc.nextInt(); sc.nextLine();
 
         if (op == 1) {
-            fm.upload(sc.nextLine());
+            System.out.print("File path: ");
+            fm.upload(user.username, sc.nextLine());
         } else {
-            fm.download(sc.nextLine(), sc.nextLine());
+            System.out.print("Encrypted file path: ");
+            String enc = sc.nextLine();
+            System.out.print("Output file path: ");
+            fm.download(user.username, user.role, enc, sc.nextLine());
         }
         sc.close();
     }
